@@ -71,19 +71,19 @@ func (r *Repository) GetPrices(ctx context.Context, coinID string, limit int) ([
         LIMIT $2
     `
 
-    // Выполняем запрос и получаем строки
+    // получаем строки
     rows, err := r.db.QueryContext(ctx, query, coinID, limit)
     if err != nil {
         return nil, fmt.Errorf("failed to query prices: %w", err)
     }
-    defer rows.Close()  // Важно: закрываем строки когда закончим
+    defer rows.Close() 
 
     var prices []*models.CryptoPrice
 
-    // Читаем строки одна за другой
+
     for rows.Next() {
         var price models.CryptoPrice
-        // Сканируем данные из строки в структуру
+        // сканируем данные из строки в структуру
         err := rows.Scan(
             &price.ID,
             &price.CoinID,
@@ -100,7 +100,6 @@ func (r *Repository) GetPrices(ctx context.Context, coinID string, limit int) ([
         prices = append(prices, &price)
     }
 
-    // Проверяем ошибки после чтения строк
     if err := rows.Err(); err != nil {
         return nil, fmt.Errorf("error iterating rows: %w", err)
     }
@@ -108,7 +107,7 @@ func (r *Repository) GetPrices(ctx context.Context, coinID string, limit int) ([
     return prices, nil
 }
 
-// Close закрывает соединение с базой данных
+// закрывает соединение с базой данных
 func (r *Repository) Close() error {
     return r.db.Close()
 }
