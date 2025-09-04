@@ -6,7 +6,7 @@ import(
 	"fmt"
 	"log"
 	"time"
-	"cryptofy-analytics/internal/models"
+	"cryptofyanalytics/internal/models"
 //дрова SQL
 	_ "github.com/jackc/pgx/v5/stdlib"
 )
@@ -18,7 +18,7 @@ type Repository struct {
 
 func NewRepository(connectionString string) (*Repository, error) {
 	//открываем соездинение с БД
-	db, error := sql.Open("pgx", connectionString)
+	db, err := sql.Open("pgx", connectionString)
 	if err != nil {
         return nil, fmt.Errorf("failed to open database: %w", err)
 	}

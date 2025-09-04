@@ -5,9 +5,8 @@ import (
     "fmt"
     "log"
     "time"
-
-    "cryptofy-analytics/internal/models"
-    "cryptofy-analytics/internal/storage/postgres"
+    "cryptofyanalytics/internal/models"
+    "cryptofyanalytics/internal/storage/postgres"
 )
 
 func main() {
