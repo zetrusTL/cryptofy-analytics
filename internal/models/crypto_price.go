@@ -4,6 +4,7 @@ import (
     "time"
 )
 
+//Мродель данных
 
 type CryptoPrice struct {
     ID           int64     `json:"id"`           

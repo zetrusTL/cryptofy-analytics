@@ -11,6 +11,10 @@ import(
 	_ "github.com/jackc/pgx/v5/stdlib"
 )
 
+
+//Реализация для PostgreSQL
+
+
 type Repository struct {
 //подключение к БД
 	db *sql.DB
