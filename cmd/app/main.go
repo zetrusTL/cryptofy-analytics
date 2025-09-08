@@ -13,7 +13,7 @@ func main() {
     // строка подключения формат: postgres://username:password@host:port/database_name
     connStr := "postgres://crypto_user:crypto_password@localhost:5432/crypto_db?sslmode=disable"
 
-    // Создаем репозиторий для работы с базой данных
+    // cоздаем репозиторий для работы с базой данных
     repo, err := postgres.NewRepository(connStr)
     if err != nil {
         log.Fatalf("❌ Failed to create repository: %v", err)
